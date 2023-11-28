@@ -62,23 +62,8 @@ else:
     with props_tabs[2]: #describtive
         st.dataframe(data.describe().T, use_container_width=True)
 
-st.divider()
+        st.divider()
 
-st.subheader('Correlation')
-
-class_column = 'class'
-feature_columns = ['mean radius', 'mean_texture']
-
-corr_matrix = (data
-                .corr(numeric_only=True)
-                .loc[feature_columns, [class_column]]
-                .sort_values(axis=0, by = class_column, assending=False)
-                .style
-                .background_gradient(cmap='twilight_shifted')
-                )
-
-
-st.dataframe(data = corr_matrix, use_container_width=True)
 
 
 if dataset_name == 'Iris':
